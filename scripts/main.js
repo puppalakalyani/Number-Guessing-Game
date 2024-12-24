@@ -1,4 +1,5 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
+console.log("Target Number (for testing):", randomNumber);
 let attempts = 0;
 
 function checkGuess() {
