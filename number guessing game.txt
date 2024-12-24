@@ -1,0 +1,70 @@
+index.html 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Guess the number between 1 and 100</p>
+    <input type="number" id="guessInput" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="result"></p>
+    <p id="attempts"></p>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
+    
+
+
+
+
+
+style.css
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#result, #attempts {
+    font-size: 18px;
+    margin-top: 20px;
+}
+  
+
+
+
+
+index.js
+
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
+
+function checkGuess() {
+    const userGuess = document.getElementById('guessInput').value;
+    attempts++;
+    let resultMessage = '';
+
+    if (userGuess < randomNumber) {
+        resultMessage = 'Too low! Try again.';
+    } else if (userGuess > randomNumber) {
+        resultMessage = 'Too high! Try again.';
+    } else {
+        resultMessage = `Congratulations! You've guessed the number in ${attempts} attempts.`;
+    }
+
+    document.getElementById('result').innerText = resultMessage;
+    document.getElementById('attempts').innerText = `Attempts: ${attempts}`;
+}
